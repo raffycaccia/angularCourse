@@ -1,6 +1,8 @@
-<ul class="list-group">
-    <li class="list-group-item" ng-repeat="item in dirCtrl.items">
-        {{ item.short_name }}: {{ item.name }} - {{ item.description }}
-        <button class="btn btn-danger btn-sm float-right" ng-click="dirCtrl.onRemove({index: $index})">Don't want this one!</button>
+<ul>
+    <li ng-repeat="item in dirCtrl.items">
+        <span>
+            <strong>{{ item.name }}</strong> ({{ item.short_name }}) - {{ item.description }}
+        </span>
+        <button ng-click="dirCtrl.onRemove({index: $index})">Don't want this one!</button>
     </li>
 </ul>

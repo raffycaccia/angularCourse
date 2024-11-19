@@ -14,13 +14,16 @@
     </style>
 </head>
 <body>
-    <div class="container" ng-controller="NarrowItDownController as ctrl">
-        <h1>Narrow Down Your Menu Choice</h1>
-        <input type="text" ng-model="ctrl.searchTerm" placeholder="Search term" class="form-control">
-        <button class="btn btn-primary mt-2" ng-click="ctrl.narrowItDown()">Narrow It Down For Me!</button>
-        <div class="mt-3" found-items items="ctrl.found" on-remove="ctrl.removeItem(index)"></div>
-        <p class="empty-message" ng-if="ctrl.emptyMessage">{{ ctrl.emptyMessage }}</p>
+    <div ng-controller="NarrowItDownController as ctrl">
+        <h1>Find Your Meal!</h1>
+        <div>
+            <input type="text" placeholder="Enter search term" ng-model="ctrl.searchTerm">
+            <button ng-click="ctrl.narrowItDown()">Narrow It Down For Me!</button>
+        </div>
+        <div class="message" ng-if="ctrl.emptyMessage">{{ ctrl.emptyMessage }}</div>
+        <found-items items="ctrl.found" on-remove="ctrl.removeItem(index)"></found-items>
     </div>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
     <script src="app.js"></script>
