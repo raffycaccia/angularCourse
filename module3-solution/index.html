@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NarrowItDownApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrow It Down</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+        .empty-message {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" ng-controller="NarrowItDownController as ctrl">
+        <h1>Narrow Down Your Menu Choice</h1>
+        <input type="text" ng-model="ctrl.searchTerm" placeholder="Search term" class="form-control">
+        <button class="btn btn-primary mt-2" ng-click="ctrl.narrowItDown()">Narrow It Down For Me!</button>
+        <div class="mt-3" found-items items="ctrl.found" on-remove="ctrl.removeItem(index)"></div>
+        <p class="empty-message" ng-if="ctrl.emptyMessage">{{ ctrl.emptyMessage }}</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
