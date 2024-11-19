@@ -10,23 +10,24 @@
     function NarrowItDownController(MenuSearchService) {
         var ctrl = this;
         ctrl.searchTerm = "";
-        ctrl.emptyMessage = "";
         ctrl.found = [];
+        ctrl.emptyMessage = "";
 
         ctrl.narrowItDown = function () {
-            if (!ctrl.searchTerm) {
+            if (!ctrl.searchTerm || ctrl.searchTerm.trim() === "") {
                 ctrl.emptyMessage = "Nothing found";
                 ctrl.found = [];
                 return;
             }
+
             MenuSearchService.getMatchedMenuItems(ctrl.searchTerm)
-                .then(function (response) {
-                    ctrl.found = response;
+                .then(function (foundItems) {
+                    ctrl.found = foundItems;
                     ctrl.emptyMessage = ctrl.found.length === 0 ? "Nothing found" : "";
                 })
                 .catch(function (error) {
-                    console.error("Error:", error);
-                    ctrl.emptyMessage = "An error occurred while fetching data.";
+                    console.error("Error occurred:", error);
+                    ctrl.emptyMessage = "Unable to retrieve data.";
                 });
         };
 
@@ -42,14 +43,20 @@
         service.getMatchedMenuItems = function (searchTerm) {
             return $http.get('https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json')
                 .then(function (response) {
-                    console.log("Response from API:", response.data); // Log the response
-                    var allItems = response.data && response.data.menu_items ? response.data.menu_items : [];
-                    return allItems.filter(function (item) {
-                        return item && item.description && item.description.toLowerCase().includes(searchTerm.toLowerCase());
+                    if (!response.data || !response.data.menu_items) {
+                        return [];
+                    }
+
+                    var allItems = response.data.menu_items;
+                    var foundItems = allItems.filter(function (item) {
+                        return item.description &&
+                               item.description.toLowerCase().includes(searchTerm.toLowerCase());
                     });
+
+                    return foundItems;
                 })
                 .catch(function (error) {
-                    console.error("Error fetching menu items:", error);
+                    console.error("HTTP request error:", error);
                     return [];
                 });
         };
