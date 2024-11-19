@@ -43,11 +43,17 @@
         service.getMatchedMenuItems = function (searchTerm) {
             return $http.get('https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json')
                 .then(function (response) {
-                    if (!response.data || !response.data.menu_items) {
-                        return [];
-                    }
+                    var data = response.data;
+                    var allItems = [];
 
-                    var allItems = response.data.menu_items;
+                    // Naviga attraverso le categorie per raccogliere tutti gli elementi menu_items
+                    Object.keys(data).forEach(function (key) {
+                        if (data[key].menu_items) {
+                            allItems = allItems.concat(data[key].menu_items);
+                        }
+                    });
+
+                    // Filtra gli elementi in base al termine di ricerca
                     var foundItems = allItems.filter(function (item) {
                         return item.description &&
                                item.description.toLowerCase().includes(searchTerm.toLowerCase());
