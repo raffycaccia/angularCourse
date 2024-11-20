@@ -7,15 +7,21 @@
   RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
   function RoutesConfig($stateProvider, $urlRouterProvider) {
 
+    // Default route
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'templates/home.template.html'
+      .state('main', {
+        abstract: true,
+        templateUrl: 'templates/main-layout.html',
       })
 
-      .state('categories', {
+      .state('main.home', {
+        url: '/',
+        templateUrl: 'templates/home.template.html',
+      })
+
+      .state('main.categories', {
         url: '/categories',
         templateUrl: 'templates/categories.template.html',
         controller: 'CategoriesController as categoriesCtrl',
@@ -26,7 +32,7 @@
         }
       })
 
-      .state('items', {
+      .state('main.items', {
         url: '/items/{categoryShortName}',
         templateUrl: 'templates/items.template.html',
         controller: 'ItemsController as itemsCtrl',
