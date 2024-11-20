@@ -9,24 +9,22 @@
     // Default route
     $urlRouterProvider.otherwise('/');
 
-    // *** Set up UI states ***
+    // States
     $stateProvider
       .state('home', {
         url: '/',
         templateUrl: 'templates/home.template.html'
       })
-
       .state('categories', {
         url: '/categories',
         templateUrl: 'templates/categories.template.html',
         controller: 'CategoriesController as categoriesCtrl',
         resolve: {
-          categories: ['MenuDataService', function (MenuDataService) {
+          items: ['MenuDataService', function (MenuDataService) {
             return MenuDataService.getAllCategories();
           }]
         }
       })
-
       .state('items', {
         url: '/items/{categoryShortName}',
         templateUrl: 'templates/items.template.html',
