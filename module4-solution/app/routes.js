@@ -6,10 +6,8 @@
 
   RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
   function RoutesConfig($stateProvider, $urlRouterProvider) {
-    // Default route
     $urlRouterProvider.otherwise('/');
 
-    // States
     $stateProvider
       .state('home', {
         url: '/',
