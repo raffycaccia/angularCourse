@@ -1,6 +1,5 @@
 (function () {
-    'use strict';
-  
-    angular.module('data', []);
-  })();
-  
+  'use strict';
+
+  angular.module('data', []);
+})();
