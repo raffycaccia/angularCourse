@@ -1,8 +1,9 @@
-<div>
-  <h2>Items</h2>
-  <ul>
-    <li ng-repeat="item in itemsCtrl.items">
-      <strong>{{ item.name }}</strong>: {{ item.description }}
-    </li>
-  </ul>
-</div>
+<div class="items">
+    <h2>Menu Items</h2>
+    <ul>
+      <li ng-repeat="item in $ctrl.items">
+        {{ item.name }}: {{ item.description }}
+      </li>
+    </ul>
+  </div>
+  
