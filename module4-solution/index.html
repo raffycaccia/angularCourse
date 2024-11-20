@@ -2,27 +2,38 @@
 <html lang="en" ng-app="MenuApp">
 <head>
   <meta charset="UTF-8">
-  <title>Menu App</title>
+  <title>Module 4 Solution</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.28/angular-ui-router.min.js"></script>
+
+  <!-- Moduli principali -->
   <script src="app/menuapp.module.js"></script>
   <script src="app/data.module.js"></script>
-  <script src="app/routes.js"></script>
+
+  <!-- Servizi -->
   <script src="app/services/menudata.service.js"></script>
+
+  <!-- Controller -->
+  <script src="app/controllers/categories.controller.js"></script>
+
+  <!-- Componenti -->
   <script src="app/components/categories.component.js"></script>
   <script src="app/components/items.component.js"></script>
+
+  <!-- Configurazione -->
+  <script src="app/routes.js"></script>
 </head>
 <body>
-  <div>
-    <header>
-      <h1>Restaurant Menu</h1>
-      <nav>
-        <a ui-sref="home">Home</a> | 
-        <a ui-sref="categories">Categories</a>
-      </nav>
-    </header>
+  <header>
+    <nav>
+      <a ui-sref="home">Home</a> |
+      <a ui-sref="categories">Categories</a>
+    </nav>
+  </header>
+
+  <main>
     <div ui-view></div>
-  </div>
+  </main>
 </body>
 </html>
