@@ -50,17 +50,17 @@
                 <a ui-sref="public.menu">
                   <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> Menu</a>
               </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> About</a>
+              <li id="navMenuButton" ui-sref-active="active">
+                <a ui-sref="public.myInfo">
+                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> My Info</a>
               </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-certificate"></span><br class="hidden-xs"> Awards</a>
+              <li id="navMenuButton" ui-sref-active="active">
+                <a ui-sref="public.signUp">
+                  <span class="glyphicon glyphicon-user"></span><br class="hidden-xs"> Sign Up</a>
               </li>
               <li id="phone" class="hidden-xs">
-                <a href="tel:410-602-5008">
-                  <span>410-602-5008</span></a><div>* We Deliver</div>
+                <a href="tel:4XX-XXX-XX08">
+                  <span>4XX-XXX-XX08</span></a><div>* We Don't Deliver ;-)</div>
               </li>
             </ul><!-- #nav-list -->
           </div><!-- .collapse .navbar-collapse -->
@@ -69,12 +69,12 @@
     </header>
 
     <div id="call-btn" class="visible-xs">
-      <a class="btn" href="tel:410-602-5008">
+      <a class="btn" href="tel:4XX-XXX-XX08">
         <span class="glyphicon glyphicon-earphone"></span>
-        410-602-5008
+        4XX-XXX-XX08
       </a>
     </div>
-    <div id="xs-deliver" class="text-center visible-xs">* We Deliver</div>
+    <div id="xs-deliver" class="text-center visible-xs">* We Don't Deliver ;-)</div>
 
     <ui-view>
       <div class="text-center initial-loading">
@@ -105,8 +105,8 @@
           </section>
         </div>
         <div class="text-center">
-          &copy; Copyright David Chu's China Bistro 2016 |
-          <a ui-sref="admin.auth">Admin</a></div>
+          &copy; Copyright David Chu's China Bistro 2024 |
+          <!--<a ui-sref="admin.auth">Admin</a></div>-->
       </div>
     </footer>
 
@@ -132,6 +132,13 @@
     <script src="src/public/menu-category/menu-category.component.js"></script>
     <script src="src/public/menu-items/menu-items.controller.js"></script>
     <script src="src/public/menu-item/menu-item.component.js"></script>
+
+    <!-- Load exta files for solution -->
+    <script src="src/common/users.service.js"></script>
+    <script src="src/public/sign-up/sign-up.controller.js"></script>
+    <script src="src/public/my-info/my-info.controller.js"></script>
+    <!-- Made changes to src/common/menu.service.js as well -->
+
 
     <!-- ADMIN SITE -->
 
